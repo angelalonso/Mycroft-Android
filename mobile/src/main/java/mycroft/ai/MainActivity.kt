@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
     private var isWearBroadcastRevieverRegistered = false
     private var launchedFromWidget = false
     private var autoPromptForSpeech = false
+    private var builtinSTTChecked = true
 
     private lateinit var ttsManager: TTSManager
     private lateinit var wsip: String
@@ -299,6 +300,7 @@ class MainActivity : AppCompatActivity() {
      * Showing google speech input dialog
      */
     private fun promptSpeechInput() {
+        builtinSTTChecked = sharedPref.getBoolean("builtinSTTSwitch", true)
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
